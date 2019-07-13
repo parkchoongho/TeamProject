@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+    <head>
+		<style>
+			.myicon{
+				margin: 20px;
+				background-color:  rgb(250, 252, 232);
+				border-radius: 80%;
+			}
+			.myicon:hover{
+				margin: 20px;
+				background-color:#cbff9d;
+				border-radius: 80%;
+			}
+			h5 {
+				text-align: center;
+      }
+      .individual_goods{
+        display: flex;
+        width: 100%;
+      }
+      .individual_goods__info{
+        width: 40%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 50px;
+      }
+      .individual_goods__info__description{
+        margin-top: 30px;
+      }
+      .individual_goods__info__price{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      .individual_goods__info__button{
+        margin-top: 30px;
+      }
+      .footer{
+        margin-top: 50px; 
+        width: 100%;
+        height: 100px;
+        background-color: black;
+      }
+      .what_to_do{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+		</style>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>
+			<% if(loginState){ %>
+				<%= email %>
+			<% }else{ %>
+				GIBOO&TAKE
+			<% } %>
+		</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+		<!-- <link rel="stylesheet" href="css/modal.css"> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/jqueryHandling.js"></script>
+		<script src="js/category/animal.js"></script>
+		<script src="js/category/elder.js"></script>
+		<script src="js/category/etc.js"></script>
+		<script src="js/category/grandma.js"></script>
+		<script src="js/category/kid.js"></script>
+		<script src="js/category/nature.js"></script>
+		<script src="js/category/people.js"></script>
+		<script src="js/category/world.js"></script>
+
+    </head>
+	<body>
+	<!--================ Start Header Menu Area =================-->
+		<header class="header_area">
+			<div class="main_menu">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="/"><img src="img/dorim2.png" width="100" height="58" alt=""></a>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My GIBOO</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="#">나의 기부 내역</a>
+										<li class="nav-item"><a class="nav-link" href="#">기부금 사용내역</a>
+										
+									</ul>
+								</li> 
+								<li class="nav-item"><a class="nav-link" href="#">Cart</a>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Information</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" onclick="window.open('/search_donateInfo_template','_blank','scrollbars=yes, resizable=yes, width=500, height=680')">기관 정보&후기</a>
+									</ul>
+								</li>
+								<li class="nav-item">
+									<% if(loginState){ %>
+									<a class="nav-link" id="logout_btn">Logout</a>
+										<% }else{ %>
+									<a class="nav-link" data-toggle="modal" data-target="#modalLRForm">Login </a>
+										<% } %>
+								</li>
+							</ul>
+						</div> 
+					</div>
+				</nav>
+			</div>
+    </header>
+    <!-- index 페이지랑 header 완전 똑같음. -->
+	<!--================ End Header Menu Area =================-->
+	<!-- Login Button -->
+	
+	<!--Modal: Login / Register Form-->
+		<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog cascading-modal" role="document">
+				<!--Content-->
+				<div class="modal-content">
+					<!--Modal cascading tabs-->
+					<div class="modal-c-tabs">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+									<!-- <i class="fas fa-user mr-1"></i> 아이콘 넣는 방법 강구하기 -->
+									로그인
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#panel8" role="tab">
+									<!-- <i class="fas fa-user-plus mr-1"></i> 아이콘 넣는 방법 강구하기-->
+									회원가입
+								</a>
+							</li>
+						</ul>
+						<!-- Tab panels -->
+						<div class="tab-content">
+							<!--Panel 7-->
+							<div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+								<!--Body-->
+								<div class="modal-body mb-1" id="login_result">
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="login_email" class="form-control form-control-sm validate"
+											placeholder="이메일">
+										<label data-error="wrong" data-success="right" for="modalLRInput10"></label>
+									</div>
+									<div class="md-form form-sm mb-4">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="login_pw" class="form-control form-control-sm validate"
+											placeholder="비밀번호">
+										<label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+									</div>
+									<div class="text-center mt-2">
+										<button class="btn btn-info" id="login_btn">
+											로그인 
+											<!-- <i class="fas fa-sign-in ml-1"></i> -->
+										</button>
+									</div>
+								</div>
+								<!--Footer-->
+								<div class="modal-footer">
+									<div class="options text-center text-md-right mt-1">
+										<p>회원이 아니신가요? <a href="#" class="blue-text">회원가입</a></p>
+										<p>비밀번호를 잊어버렸나요? <a href="#" class="blue-text">비밀번호 찾기</a></p>
+									</div>
+									<button type="button" class="btn btn-outline-info waves-effect ml-auto"
+										data-dismiss="modal" id="login_close_btn">닫기</button>
+								</div>
+							</div>
+							<!--/.Panel 7-->
+							<!--Panel 8-->
+							<div class="tab-pane fade" id="panel8" role="tabpanel">
+								<!--Body-->
+								<div class="modal-body" id="register_result">
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="register_name" class="form-control form-control-sm validate"
+											placeholder="이름">
+										<label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+									</div>
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="register_email"
+											class="form-control form-control-sm validate" placeholder="이메일">
+										<label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+									</div>
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="register_pw"
+											class="form-control form-control-sm validate" placeholder="비밀번호">
+										<label data-error="wrong" data-success="right" for="modalLRInput13"></label>
+									</div>
+									<div class="md-form form-sm mb-4">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="register_pw_check"
+											class="form-control form-control-sm validate" placeholder="비밀번호 확인">
+										<label data-error="wrong" data-success="right" for="modalLRInput14"></label>
+									</div>
+
+									<div class="text-center form-sm mt-2">
+										<button class="btn btn-info" id="register_btn">
+											가입하기 
+											<!-- <i class="fas fa-sign-in ml-1"></i> -->
+										</button>
+									</div>
+								</div>
+								<!--Footer-->
+								<div class="modal-footer">
+									<div class="options text-right">
+										<p class="pt-1">이미 회원이신가요? <a href="#" class="blue-text">로그인</a>
+										</p>
+									</div>
+									<button type="button" class="btn btn-outline-info waves-effect ml-auto"
+										data-dismiss="modal" id="register_close_btn">닫기</button>
+								</div>
+							</div>
+							<!--/.Panel 8-->
+						</div>
+					</div>
+				</div>
+				<!--/.Content-->
+			</div>
+		</div>
+    <!-- Login Modal End -->
+	<!--================ Home Banner Area =================-->
+		<section class="home_banner_area" style="min-height: 300px"></section>
+		
+    </section>
+    <!-- header 뒤쪽에 위치한 애들 사진 -->
+  <!--================ End Home Banner Area =================-->
+  
+  <main>
+    <div class="individual_goods">
+      <img src="img/picture2.jpg" width="40%" height="400px" style="margin-top: 50px; margin-left: 50px"> <!-- 사진 -->
+      <div class="individual_goods__info">
+          <h3>초록 어린이 재단 </h3> <!-- 상품 명 -->
+          <p class="individual_goods__info__description" >아동이 건강한 사회인으로 성장 할 수 있도록 교육 및 학업에 관련한 비용을 지원합니다. 교재 교구비, 교복비, 학원비, 등하교 교통비를 지원합니다.</p>
+          <!-- 상품 설명 -->
+          <div class="individual_goods__info__price">
+            <span >현재모금액: 800만원</span>
+            <span>목표액: 1000만원</span>
+          </div>
+          <!-- 상품 요금 정보 -->
+          
+          <div class="individual_goods__info__button">
+              <a href="#" class="primary_btn">기부</a>
+              <span class="lnr lnr-cart"></span> cart
+              <span class="lnr lnr-heart"></span> 100 Donors
+          </div>
+          <!-- 기부 버튼, 장바구니 담기, 좋아요-->
+      </div>
+    </div>
+    <div class="what_to_do">
+      <h3>머를 추가하면 좋을까?</h3>
+    </div>
+  </main>
+  <footer class="footer">
+
+  </footer>
+  <!-- footer 안에 우리 회사 정보 간략하게 표현-->
+	
+
+	
+	
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/stellar.js"></script>
+	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
+	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/mail-script.js"></script>
+	<script src="js/countdown.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="js/gmaps.min.js"></script>
+	<script src="js/theme.js"></script>
+</body>
+</html>

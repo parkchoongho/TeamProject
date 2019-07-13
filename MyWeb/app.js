@@ -43,6 +43,7 @@ app.use(
   require("./routes/search_donateInfo_template")
 );
 app.use("/search_donateInfo", require("./routes/search_donateInfo"));
+app.use("/individual_goods", require("./routes/individualGoods"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

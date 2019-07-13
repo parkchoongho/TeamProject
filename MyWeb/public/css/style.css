@@ -42,6 +42,10 @@ Table of Content:
 /*Color Variables*/
 /*=================== fonts ====================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:500,600");
+@import "bootstrap.css";
+@import "font-awesome.min.css";
+@import "modal.css";
+@import "responsive.css";
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 body {

@@ -22,23 +22,21 @@
         <link rel="icon" href="img/favicon.png" type="image/png">
         <title>
 			<% if(loginState){ %>
-				<%= email %> <% }else{ %>GIBOO&TAKE <%
-				} %>
+				<%= email %>
+			<% }else{ %>
+				GIBOO&TAKE
+			<% } %>
 		</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
         <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/responsive.css">
-		<link rel="stylesheet" href="css/modal.css">
 		<!-- <link rel="stylesheet" href="css/modal.css"> -->
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/my.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/jqueryHandling.js"></script>
 		<script src="js/category/animal.js"></script>
 		<script src="js/category/elder.js"></script>
 		<script src="js/category/etc.js"></script>
@@ -49,20 +47,14 @@
 		<script src="js/category/world.js"></script>
 
     </head>
-<body>
-        
+	<body>
 	<!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-		<div class="main_menu">
+		<header class="header_area">
+			<div class="main_menu">
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="/"><img src="img/dorim2.png" width="250" height="200" alt=""></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
+						<a class="navbar-brand logo_h" href="/"><img src="img/dorim2.png" width="100" height="58" alt=""></a>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
@@ -81,10 +73,7 @@
 									<ul class="dropdown-menu">
 										<li class="nav-item"><a class="nav-link" onclick="window.open('/search_donateInfo_template','_blank','scrollbars=yes, resizable=yes, width=500, height=680')">기관 정보&후기</a>
 									</ul>
-								</li> 
-					
-							
-								
+								</li>
 								<li class="nav-item">
 									<% if(loginState){ %>
 									<a class="nav-link" id="logout_btn">Logout</a>
@@ -96,228 +85,199 @@
 						</div> 
 					</div>
 				</nav>
-			
-		</div>
-	</header>
+			</div>
+		</header>
 	<!--================ End Header Menu Area =================-->
 	<!-- Login Button -->
 	
 	<!--Modal: Login / Register Form-->
-    <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog cascading-modal" role="document">
-            <!--Content-->
-            <div class="modal-content">
-                <!--Modal cascading tabs-->
-                <div class="modal-c-tabs">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
-								<!-- <i class="fas fa-user mr-1"></i> 아이콘 넣는 방법 강구하기 -->
-								로그인
-							</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab">
-								<!-- <i class="fas fa-user-plus mr-1"></i> 아이콘 넣는 방법 강구하기-->
-								회원가입
-							</a>
-                        </li>
-                    </ul>
+		<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog cascading-modal" role="document">
+				<!--Content-->
+				<div class="modal-content">
+					<!--Modal cascading tabs-->
+					<div class="modal-c-tabs">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+									<!-- <i class="fas fa-user mr-1"></i> 아이콘 넣는 방법 강구하기 -->
+									로그인
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#panel8" role="tab">
+									<!-- <i class="fas fa-user-plus mr-1"></i> 아이콘 넣는 방법 강구하기-->
+									회원가입
+								</a>
+							</li>
+						</ul>
+						<!-- Tab panels -->
+						<div class="tab-content">
+							<!--Panel 7-->
+							<div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+								<!--Body-->
+								<div class="modal-body mb-1" id="login_result">
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="login_email" class="form-control form-control-sm validate"
+											placeholder="이메일">
+										<label data-error="wrong" data-success="right" for="modalLRInput10"></label>
+									</div>
+									<div class="md-form form-sm mb-4">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="login_pw" class="form-control form-control-sm validate"
+											placeholder="비밀번호">
+										<label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+									</div>
+									<div class="text-center mt-2">
+										<button class="btn btn-info" id="login_btn">
+											로그인 
+											<!-- <i class="fas fa-sign-in ml-1"></i> -->
+										</button>
+									</div>
+								</div>
+								<!--Footer-->
+								<div class="modal-footer">
+									<div class="options text-center text-md-right mt-1">
+										<p>회원이 아니신가요? <a href="#" class="blue-text">회원가입</a></p>
+										<p>비밀번호를 잊어버렸나요? <a href="#" class="blue-text">비밀번호 찾기</a></p>
+									</div>
+									<button type="button" class="btn btn-outline-info waves-effect ml-auto"
+										data-dismiss="modal" id="login_close_btn">닫기</button>
+								</div>
+							</div>
+							<!--/.Panel 7-->
+							<!--Panel 8-->
+							<div class="tab-pane fade" id="panel8" role="tabpanel">
+								<!--Body-->
+								<div class="modal-body" id="register_result">
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="register_name" class="form-control form-control-sm validate"
+											placeholder="이름">
+										<label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+									</div>
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-envelope prefix"></i> -->
+										<input type="email" id="register_email"
+											class="form-control form-control-sm validate" placeholder="이메일">
+										<label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+									</div>
+									<div class="md-form form-sm mb-5">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="register_pw"
+											class="form-control form-control-sm validate" placeholder="비밀번호">
+										<label data-error="wrong" data-success="right" for="modalLRInput13"></label>
+									</div>
+									<div class="md-form form-sm mb-4">
+										<!-- <i class="fas fa-lock prefix"></i> -->
+										<input type="password" id="register_pw_check"
+											class="form-control form-control-sm validate" placeholder="비밀번호 확인">
+										<label data-error="wrong" data-success="right" for="modalLRInput14"></label>
+									</div>
 
-                    <!-- Tab panels -->
-                    <div class="tab-content">
-                        <!--Panel 7-->
-                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-                            <!--Body-->
-                            <div class="modal-body mb-1" id="login_result">
-                                <div class="md-form form-sm mb-5">
-                                    <!-- <i class="fas fa-envelope prefix"></i> -->
-                                    <input type="email" id="login_email" class="form-control form-control-sm validate"
-                                        placeholder="이메일">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput10"></label>
-                                </div>
-
-                                <div class="md-form form-sm mb-4">
-                                    <!-- <i class="fas fa-lock prefix"></i> -->
-                                    <input type="password" id="login_pw" class="form-control form-control-sm validate"
-                                        placeholder="비밀번호">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput11"></label>
-                                </div>
-                                <div class="text-center mt-2">
-                                    <button class="btn btn-info" id="login_btn">
-										로그인 
-										<!-- <i class="fas fa-sign-in ml-1"></i> -->
-									</button>
-                                </div>
-                            </div>
-                            <!--Footer-->
-                            <div class="modal-footer">
-                                <div class="options text-center text-md-right mt-1">
-                                    <p>회원이 아니신가요? <a href="#" class="blue-text">회원가입</a></p>
-                                    <p>비밀번호를 잊어버렸나요? <a href="#" class="blue-text">비밀번호 찾기</a></p>
-                                </div>
-                                <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                                    data-dismiss="modal" id="login_close_btn">닫기</button>
-                            </div>
-
-                        </div>
-                        <!--/.Panel 7-->
-
-                        <!--Panel 8-->
-                        <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-                            <!--Body-->
-                            <div class="modal-body" id="register_result">
-                                <div class="md-form form-sm mb-5">
-                                    <!-- <i class="fas fa-envelope prefix"></i> -->
-                                    <input type="email" id="register_name" class="form-control form-control-sm validate"
-                                        placeholder="이름">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput11"></label>
-                                </div>
-                                <div class="md-form form-sm mb-5">
-                                    <!-- <i class="fas fa-envelope prefix"></i> -->
-                                    <input type="email" id="register_email"
-                                        class="form-control form-control-sm validate" placeholder="이메일">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
-                                </div>
-
-                                <div class="md-form form-sm mb-5">
-                                    <!-- <i class="fas fa-lock prefix"></i> -->
-                                    <input type="password" id="register_pw"
-                                        class="form-control form-control-sm validate" placeholder="비밀번호">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
-                                </div>
-
-                                <div class="md-form form-sm mb-4">
-                                    <!-- <i class="fas fa-lock prefix"></i> -->
-                                    <input type="password" id="register_pw_check"
-                                        class="form-control form-control-sm validate" placeholder="비밀번호 확인">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
-                                </div>
-
-                                <div class="text-center form-sm mt-2">
-                                    <button class="btn btn-info" id="register_btn">
-										가입하기 
-										<!-- <i class="fas fa-sign-in ml-1"></i> -->
-									</button>
-                                </div>
-
-                            </div>
-                            <!--Footer-->
-                            <div class="modal-footer">
-                                <div class="options text-right">
-                                    <p class="pt-1">이미 회원이신가요? <a href="#" class="blue-text">로그인</a>
-                                    </p>
-                                </div>
-                                <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                                    data-dismiss="modal" id="register_close_btn">닫기</button>
-                            </div>
-                        </div>
-                        <!--/.Panel 8-->
-                    </div>
-
-                </div>
-            </div>
-            <!--/.Content-->
-        </div>
-    </div>
-
-    <!-- Login Modal End -->
-
-
-
-
-
-
-	<!--================ Home Banner Area =================-->
-	<section class="home_banner_area">
-		<div class="banner_inner">
-			<div class="container">
-				<div class="banner_content">
-					<p class="upper_text"></p>
-					<h2>to make the better world</h2>
-					<p>
-						당신의 가치있는 소비가 이 세상을 아름답게 만듭니다.
-					</p>
-					<a class="primary_btn mr-20" href="#">정기후원하기</a>
-					<a class="primary_btn yellow_btn text-white" href="#">일시후원히기</a>
-					
-					
-					
-					
-					
-
-
-
-
-					
+									<div class="text-center form-sm mt-2">
+										<button class="btn btn-info" id="register_btn">
+											가입하기 
+											<!-- <i class="fas fa-sign-in ml-1"></i> -->
+										</button>
+									</div>
+								</div>
+								<!--Footer-->
+								<div class="modal-footer">
+									<div class="options text-right">
+										<p class="pt-1">이미 회원이신가요? <a href="#" class="blue-text">로그인</a>
+										</p>
+									</div>
+									<button type="button" class="btn btn-outline-info waves-effect ml-auto"
+										data-dismiss="modal" id="register_close_btn">닫기</button>
+								</div>
+							</div>
+							<!--/.Panel 8-->
+						</div>
+					</div>
 				</div>
+				<!--/.Content-->
 			</div>
 		</div>
-	</section>
+    <!-- Login Modal End -->
+	<!--================ Home Banner Area =================-->
+		<section class="home_banner_area">
+			<div class="banner_inner">
+				<div class="container">
+					<div class="banner_content">
+						<h2>to make the better world</h2>
+						<p>
+							당신의 가치있는 소비가 이 세상을 아름답게 만듭니다.
+						</p>
+						<a class="primary_btn mr-20" href="#">정기후원하기</a>
+						<a class="primary_btn yellow_btn text-white" href="#">일시후원히기</a>
+					</div>
+				</div>
+			</div>
+		</section>
 	<!--================ End Home Banner Area =================-->
 	
 	<!--================ Start Causes Area =================-->
-	<section class="causes_area">
-		<div class="container">
-			<div class="main_title">
-		
+		<section class="causes_area">
+			<div class="container">
+				<div class="main_title">
+				</div>
+			
+				<div class="row">
+					<div>
+						<div class="myicon">
+							<img id="kid" src="img/baby.png" width="100" height="100" >
+						</div>
+						<h5>아동/청소년</h5>
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="elder" src="img/people.png" width="100" height="100"alt="">
+						</div>
+						<h5>어르신</h5>	
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="world" src="img/world.png" width="100" height="100" alt="">
+						</div>
+						<h5>지구촌</h5>	
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="people" src="img/people1.png" width="100" height="100" alt="">
+						</div>	
+						<h5>장애인</h5>	
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="animal" src="img/dog.png" width="100" height="100"alt="">
+						</div>
+						<h5>동물</h5>
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="nature" src="img/nature.png" width="100" height="100" alt="">
+						</div>	
+						<h5>자연</h5>
+					</div>	
+					<div>
+						<div class="myicon">
+							<img id="grandma"src="img/woman.png" width="100" height="100" alt="">
+						</div>	
+						<h5>위안부할머니</h5>
+					</div>
+					<div>
+						<div class="myicon">
+							<img id="etc" src="img/etc.png" width="100" height="100" alt="">
+						</div>		
+						<h5>기타</h5>	
+					</div>										
+				</div>
 			</div>
-			<div class="row">
-			<div>
-			<div class="myicon">
-			<img id="kid" src="img/baby.png" width="100" height="100" >
-			</div>
-			<h5>아동/청소년</h5>
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="elder" src="img/people.png" width="100" height="100"alt="">
-			</div>
-			<h5>어르신</h5>	
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="world" src="img/world.png" width="100" height="100" alt="">
-			</div>
-			<h5>지구촌</h5>	
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="people" src="img/people1.png" width="100" height="100" alt="">
-			</div>	
-			<h5>장애인</h5>	
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="animal" src="img/dog.png" width="100" height="100"alt="">
-			</div>
-			<h5>동물</h5>
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="nature" src="img/nature.png" width="100" height="100" alt="">
-			</div>	
-			<h5>자연</h5>
-			</div>	
-			<div>
-			<div class="myicon">
-			<img id="grandma"src="img/woman.png" width="100" height="100" alt="">
-			</div>	
-			<h5>위안부할머니</h5>
-			</div>
-			<div>
-			<div class="myicon">
-			<img id="etc" src="img/etc.png" width="100" height="100" alt="">
-			</div>		
-			<h5>기타</h5>	
-			</div>		
-											
-		</div>
-	</section>
+		</section>
 	<!--================ End Causes Area =================-->
 
 	<!--================ Start About Us Area =================-->
@@ -325,266 +285,267 @@
 	<!--================ End About Us Area =================-->
 
 	<!--================ Start Features Cause section =================-->
-	<section id="main_div" class="features_causes">
-		<div class="container">
-			<div class="main_title">
-				<h2>기부 몰</h2>
-				<p>후원자의 삶과 함께할 상품을 신중하게 선택하여 장바구니에 담아주세요</p>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/picture2.JPG" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<h5 style=color:pink>인기</h5>
-								<h4 class="card-title">초록어린이재단-어린이교육</h4>
-								
-								<p class="card-text">
-								아동이 건강한 사회인으로 성장 할 수 있도록 교육 및 학업에 관련한 비용을 지원합니다. 교재 교구비, 교복비, 학원비, 등하교 교통비를 지원합니다.
-								 </p>
-								 <br><br>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>현재모금액: 800만원</p>
-									<p><span>목표액: 1000만원</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary_btn">기부</a>
-									<p>
-									<span class="lnr lnr-cart"></span> cart
-									<span class="lnr lnr-heart"></span> 100 Donors</p>
+		<section id="main_div" class="features_causes">
+			<div class="container">
+				<div class="main_title">
+					<h2>기부 몰</h2>
+					<p>후원자의 삶과 함께할 상품을 신중하게 선택하여 장바구니에 담아주세요</p>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<figure>
+									<a href="/individual_goods">
+										<img class="card-img-top img-fluid" src="img/picture2.JPG" alt="Card image cap">
+									</a>
+								</figure>
+								<div class="card_inner_body">
+									<h5 style=color:pink>인기</h5>
+									<h4 class="card-title">초록어린이재단-어린이교육</h4>
 									
+									<p class="card-text">
+									아동이 건강한 사회인으로 성장 할 수 있도록 교육 및 학업에 관련한 비용을 지원합니다. 교재 교구비, 교복비, 학원비, 등하교 교통비를 지원합니다.
+									</p>
+									<br><br>
+									<div class="d-flex justify-content-between raised_goal">
+										<p>현재모금액: 800만원</p>
+										<p><span>목표액: 1000만원</span></p>
+									</div>
+									<div class="d-flex justify-content-between donation align-items-center">
+										<a href="#" class="primary_btn">기부</a>
+										
+										<span class="lnr lnr-cart"></span> cart
+										<span class="lnr lnr-heart"></span> 100 Donors</p>
+										
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" height="500px" src="img/picture1.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<h5 style=color:pink>인기</h5>
-								<h4 class="card-title">동물행동권 카라-유기견보호</h4>
-								<p class="card-text">
-									구조된 동물들의 결연자가 되어주세요 단체에서 구조한 동물들중 나이가 많거나 완치가 어려운 질병이 있는 경우, 또는 성격상의 문제로 당장은 입양이 어려운 동물들의 최종 입양이 결정될 때까지 지속적인 후원을 하는 방식입니다.
-								</p>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>현재 후원자: 100명 </p>
-									<p><span>기부금액:후원자 임의</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary_btn">기부</a>
-									<p>
-										<span class="lnr lnr-cart"></span> cart
-										<span class="lnr lnr-heart"></span> 77 Donors</p>
+					<div class="col-lg-4 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<figure>
+									<img class="card-img-top img-fluid" height="230px" src="img/picture1.jpg" alt="Card image cap">
+								</figure>
+								<div class="card_inner_body">
+									<h5 style=color:pink>인기</h5>
+									<h4 class="card-title">동물행동권 카라-유기견보호</h4>
+									<p class="card-text">
+										구조된 동물들의 결연자가 되어주세요 단체에서 구조한 동물들중 나이가 많거나 완치가 어려운 질병이 있는 경우, 또는 성격상의 문제로 당장은 입양이 어려운 동물들의 최종 입양이 결정될 때까지 지속적인 후원을 하는 방식입니다.
+									</p>
+									<div class="d-flex justify-content-between raised_goal">
+										<p>현재 후원자: 100명 </p>
+										<p><span>기부금액:후원자 임의</span></p>
+									</div>
+									<div class="d-flex justify-content-between donation align-items-center">
+										<a href="#" class="primary_btn">기부</a>
+										<p>
+											<span class="lnr lnr-cart"></span> cart
+											<span class="lnr lnr-heart"></span> 77 Donors</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/picture3.JPG" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<br><br><br>
-								<h5 style=color:pink>special</h5>
-								<h4 class="card-title">희움-위안부할머니 의식팔찌</h4>
-								<p class="card-text">
-								판매 수익금 전액(제품제작의 제반비용을 제외한 수익금)은 일본국 '위안부' 문제해결 활동, 희움
-								일본군 '위안부' 역사관 운영기금으로 사용되며, 평화와 여성인권을 존중 하는 미래를 위해 사용합니다.
-								<h5 style="color:gray">판매가 2000원</h5>
-								</p>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>현재 모금액:900만원</p>
-									<p><span>: 목표액: 1200만원</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary_btn">기부</a>
-									<p>
-										<span class="lnr lnr-cart"></span> cart
-										<span class="lnr lnr-heart"></span> 450 Donors</p>
+					<div class="col-lg-4 col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<figure>
+									<img class="card-img-top img-fluid" src="img/picture3.JPG" alt="Card image cap">
+								</figure>
+								<div class="card_inner_body">
+									<br><br><br>
+									<h5 style=color:pink>special</h5>
+									<h4 class="card-title">희움-위안부할머니 의식팔찌</h4>
+									<p class="card-text">
+									판매 수익금 전액(제품제작의 제반비용을 제외한 수익금)은 일본국 '위안부' 문제해결 활동, 희움
+									일본군 '위안부' 역사관 운영기금으로 사용되며, 평화와 여성인권을 존중 하는 미래를 위해 사용합니다.
+									<h5 style="color:gray">판매가 2000원</h5>
+									</p>
+									<div class="d-flex justify-content-between raised_goal">
+										<p>현재 모금액:900만원</p>
+										<p><span>: 목표액: 1200만원</span></p>
+									</div>
+									<div class="d-flex justify-content-between donation align-items-center">
+										<a href="#" class="primary_btn">기부</a>
+										<p>
+											<span class="lnr lnr-cart"></span> cart
+											<span class="lnr lnr-heart"></span> 450 Donors</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	<!--================ End Features Cause section =================-->
 
 	<!--================ Start Recent Event Area =================-->
-	<section class="event_area section_gap_custom">
-		<div class="container">
-			<div class="main_title">
-				<h2>이 달의 재단 - World Vision</h2>
-				<p>우리의 비전은 모든 어린이가 풍성한 삶을 누리는 것 입니다.</p>
+		<section class="event_area section_gap_custom">
+			<div class="container">
+				<div class="main_title">
+					<h2>이 달의 재단 - World Vision</h2>
+					<p>우리의 비전은 모든 어린이가 풍성한 삶을 누리는 것 입니다.</p>
+				</div>
+			
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="single_event">
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-6">
+									<figure>
+										<img class="img-fluid w-100" src="img/event/e1.jpg" alt="">
+										<div class="img-overlay"></div>
+									</figure>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="content_wrapper">
+										<h3 class="title">
+											<a href="event-details.html">긴급한 재난 현장 위험에 처한 아이들을 돕습니다.</a>
+										</h3>
+										<p>
+										분쟁,태풍,홍수 가뭄등 재난히 발생한 지역에 긴급구호 전문가를 파견하고 피해를 입은 모두가 일상을 회복할 수 있도록 재건 복구사업을 진행합니다.
+										</p>
+										<div class="d-flex count_time" id="clockdiv1">
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div>
+												
+											</div>
+										</div>
+										<a href="#" class="primary_btn">더 보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="single_event">
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-6">
+									<figure>
+										<img class="img-fluid w-100" src="img/event/e2.jpg" alt="">
+										<div class="img-overlay"></div>
+									</figure>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="content_wrapper">
+										<h3 class="title">
+											<a href="event-details.html">갑작스런 위기를 이겨낼 수 있는 힘이 됩니다.</a>
+										</h3>
+										<p>
+										실직,이혼,질병,가정폭력 등 위태로운 상황에 놓여있는 아동과 청소년 가정에 생계비,주거비,의료비,재해비를 지원합니다.
+										</p>
+										<div class="d-flex count_time" id="clockdiv2">
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div>
+												
+											</div>
+										</div>
+										<a href="#" class="primary_btn">더 보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="single_event">
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-6">
+									<figure>
+										<img class="img-fluid w-100" src="img/event/e3.jpg" alt="">
+										<div class="img-overlay"></div>
+									</figure>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="content_wrapper">
+										<h3 class="title">
+											<a href="event-details.html">깨끗한 물과 환경을 만들어 나갑니다.</a>
+										</h3>
+										<p>
+											환경이 열악한 해외지역에 취약한 아동과 주민이 사용할 수 도록 안전한고 가까운 위치에 식수시설과 화장실을 설치합니다.
+										</p>
+										<div class="d-flex count_time" id="clockdiv3">
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div>
+												
+											</div>
+										</div>
+										<a href="#" class="primary_btn">더 보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="single_event">
+							<div class="row align-items-center">
+								<div class="col-lg-6 col-md-6">
+									<figure>
+										<img class="img-fluid w-100" src="img/event/e4.jpg" alt="">
+										<div class="img-overlay"></div>
+									</figure>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="content_wrapper">
+										<h3 class="title">
+											<a href="event-details.html">굶주림의 고통을 없애는데 함께하고있습니다.</a>
+										</h3>
+										<p>
+										분쟁과 자연재해에 심각한 식량위기 상황속에 월드비전은 영양 실조에 걸린 이들에게 치료식을 지급하고 주민이 식량 문제를 스스로 극복할 수 있도록 돕습니다.
+										</p>
+										<div class="d-flex count_time" id="clockdiv4">
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div class="mr-25">
+												
+											</div>
+											<div>
+												
+											</div>
+										</div>
+										<a href="#" class="primary_btn">더 보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="single_event">
-						<div class="row align-items-center">
-							<div class="col-lg-6 col-md-6">
-								<figure>
-									<img class="img-fluid w-100" src="img/event/e1.jpg" alt="">
-									<div class="img-overlay"></div>
-								</figure>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="content_wrapper">
-									<h3 class="title">
-										<a href="event-details.html">긴급한 재난 현장 위험에 처한 아이들을 돕습니다.</a>
-									</h3>
-									<p>
-									분쟁,태풍,홍수 가뭄등 재난히 발생한 지역에 긴급구호 전문가를 파견하고 피해를 입은 모두가 일상을 회복할 수 있도록 재건 복구사업을 진행합니다.
-									</p>
-									<div class="d-flex count_time" id="clockdiv1">
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div>
-											
-										</div>
-									</div>
-									<a href="#" class="primary_btn">더 보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="single_event">
-						<div class="row align-items-center">
-							<div class="col-lg-6 col-md-6">
-								<figure>
-									<img class="img-fluid w-100" src="img/event/e2.jpg" alt="">
-									<div class="img-overlay"></div>
-								</figure>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="content_wrapper">
-									<h3 class="title">
-										<a href="event-details.html">갑작스런 위기를 이겨낼 수 있는 힘이 됩니다.</a>
-									</h3>
-									<p>
-									실직,이혼,질병,가정폭력 등 위태로운 상황에 놓여있는 아동과 청소년 가정에 생계비,주거비,의료비,재해비를 지원합니다.
-									</p>
-									<div class="d-flex count_time" id="clockdiv2">
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div>
-											
-										</div>
-									</div>
-									<a href="#" class="primary_btn">더 보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="single_event">
-						<div class="row align-items-center">
-							<div class="col-lg-6 col-md-6">
-								<figure>
-									<img class="img-fluid w-100" src="img/event/e3.jpg" alt="">
-									<div class="img-overlay"></div>
-								</figure>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="content_wrapper">
-									<h3 class="title">
-										<a href="event-details.html">깨끗한 물과 환경을 만들어 나갑니다.</a>
-									</h3>
-									<p>
-										환경이 열악한 해외지역에 취약한 아동과 주민이 사용할 수 도록 안전한고 가까운 위치에 식수시설과 화장실을 설치합니다.
-									</p>
-									<div class="d-flex count_time" id="clockdiv3">
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div>
-											
-										</div>
-									</div>
-									<a href="#" class="primary_btn">더 보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="single_event">
-						<div class="row align-items-center">
-							<div class="col-lg-6 col-md-6">
-								<figure>
-									<img class="img-fluid w-100" src="img/event/e4.jpg" alt="">
-									<div class="img-overlay"></div>
-								</figure>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="content_wrapper">
-									<h3 class="title">
-										<a href="event-details.html">굶주림의 고통을 없애는데 함께하고있습니다.</a>
-									</h3>
-									<p>
-									분쟁과 자연재해에 심각한 식량위기 상황속에 월드비전은 영양 실조에 걸린 이들에게 치료식을 지급하고 주민이 식량 문제를 스스로 극복할 수 있도록 돕습니다.
-									</p>
-									<div class="d-flex count_time" id="clockdiv4">
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div class="mr-25">
-											
-										</div>
-										<div>
-											
-										</div>
-									</div>
-									<a href="#" class="primary_btn">더 보기</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+		</section>
 	
 <!--================ Start CTA Area =================-->
 	<div class="cta-area section_gap overlay">
@@ -682,20 +643,6 @@
 		</div>
 	</section>
 	<!--================ End Story Area =================-->
-
-	<!--================ Start Subscribe Area =================-->
-	<div class="container">
-		<div class="subscribe_area">
-			<div class="row">
-				<div class="col-lg-12">
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-	
-	<!--================ End Subscribe Area =================-->
      
 	
 	
