@@ -44,6 +44,8 @@ app.use(
 );
 app.use("/search_donateInfo", require("./routes/search_donateInfo"));
 app.use("/individual_goods", require("./routes/individualGoods"));
+app.use("/cart", require("./routes/cart"));
+app.use("/item_purchase", require("./routes/itemPurchase"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

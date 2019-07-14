@@ -11,7 +11,7 @@ router.post("/", function(req, res, next) {
     host: "localhost",
     user: "root",
     password: "mysql",
-    database: "webproject"
+    database: "nodejs"
   });
 
   con.connect(err => {

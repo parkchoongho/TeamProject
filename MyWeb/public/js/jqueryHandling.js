@@ -92,4 +92,19 @@ $(document).ready(function() {
       }
     });
   });
+
+  $("#purchase_btn").click(function() {
+    const purchasePrice = $("#purchase_price").val();
+    const nameOfGoods = $(".individual_goods__info");
+
+    console.log(nameOfGoods);
+
+    const send_params = {
+      purchasePrice
+    };
+
+    $.post("/item_purchase", send_params, function(data, status) {
+      const parsedData = JSON.parse(data);
+    });
+  });
 });
