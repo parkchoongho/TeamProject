@@ -38,14 +38,21 @@ app.use("/users", usersRouter);
 app.use("/member_insert", require("./routes/member_insert"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
+app.use("/member_delete", require("./routes/member_delete"));
+
 app.use(
   "/search_donateInfo_template",
   require("./routes/search_donateInfo_template")
 );
 app.use("/search_donateInfo", require("./routes/search_donateInfo"));
-app.use("/individual_goods", require("./routes/individualGoods"));
+app.use("/item_detail", require("./routes/item_detail"));
+app.use("/item_insert", require("./routes/item_insert"));
+app.use("/item_insert_template", require("./routes/item_insert_template"));
+app.use("/search_item", require("./routes/search_item"));
+app.use("/item_purchase", require("./routes/item_purchase"));
 app.use("/cart", require("./routes/cart"));
-app.use("/item_purchase", require("./routes/itemPurchase"));
+app.use("/upload", require("./routes/upload"));
+app.use("/item_trash", require("./routes/item_trash"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
